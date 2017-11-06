@@ -1,0 +1,141 @@
+﻿<html>
+
+<head>
+
+<style>
+
+h1{
+ text-align: center;
+}
+
+.button_wrapper{
+ text-align: center;
+}
+
+.text_wrapper{
+ text-align: center;
+}
+
+
+.button{
+ margin-right: 20px;
+ margin-left: 20px;
+ margin-bottom: 30px;
+ width: 100px;
+ height: 40px;
+}
+
+.text{
+ margin-right: 20px;
+ margin-left: 20px;
+ margin-bottom: 30px;
+ width: 250px;
+ height: 40px;
+}
+
+
+
+</style>
+</head>
+
+
+<body>
+
+<h1 id = "dai">電卓</h1>
+
+<div class = "text_wrapper">
+<form name = "myFORM">
+ <input type = "text" class = "text" name = "number" id = "number" value = "0">
+ <input type = "button" value = "C" class = "button" onclick = "C()">
+</form>
+</div>
+
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "7" class = "button" onclick = "myvalue(7)">
+ <input type = "button" value = "8" class = "button" onclick = "myvalue(8)">
+ <input type = "button" value = "9" class = "button" onclick = "myvalue(9)">
+ <input type = "button" value = "÷" class = "button" onclick = "calculate('/')">
+</form>
+</div>
+
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "4" class = "button" onclick = "myvalue(4)">
+ <input type = "button" value = "5" class = "button" onclick = "myvalue(5)">
+ <input type = "button" value = "6" class = "button" onclick = "myvalue(6)">
+ <input type = "button" value = "×" class = "button" onclick = "calculate('*')">
+</form>
+</div>
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "1" class = "button" onclick = "myvalue(1)">
+ <input type = "button" value = "2" class = "button" onclick = "myvalue(2)">
+ <input type = "button" value = "3" class = "button" onclick = "myvalue(3)">
+ <input type = "button" value = "－" class = "button" onclick = "calculate('-')">
+</form>
+</div>
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "0" class = "button" onclick = "myvalue(0)">
+ <input type = "button" value = "・" class = "button" onclick = "myvalue('.')">
+ <input type = "button" value = "＋" class = "button" onclick = "calculate('+')">
+ <input type = "button" value = "＝" class = "button" onclick = "calculate('=')">
+</form>
+</div>
+
+
+
+<script>
+
+var total = 0;
+var input = "";
+var calc = "+";
+var flg = 1;
+
+function myvalue(data){
+ flg = 0;
+ input += data;
+ document.myFORM.number.value = input;
+
+}
+
+function calculate(data){
+
+ if(flg==0){
+	flg = 1;
+	var work = total + calc + input;
+	total = eval(work);
+	input = "";
+	document.myFORM.number.value = total;
+ }
+ if(data=="="){
+	total = 0;
+	calc = "+";
+ }else{
+	calc = data;
+ }
+
+}
+
+
+function C(){
+
+ total = 0;
+ calc = "+";
+ input = "";
+ document.myFORM.number.value = total;
+
+}
+
+
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,119 @@
+﻿<html>
+
+<head>
+
+<style>
+
+h1{
+ text-align: center;
+}
+
+.button_wrapper{
+ text-align: center;
+}
+
+.text_wrapper{
+ text-align: center;
+}
+
+
+.button{
+ margin-right: 20px;
+ margin-left: 20px;
+ margin-bottom: 30px;
+ width: 100px;
+ height: 40px;
+}
+
+.text{
+ margin-right: 20px;
+ margin-left: 20px;
+ margin-bottom: 30px;
+ width: 250px;
+ height: 40px;
+}
+
+
+
+</style>
+</head>
+
+
+<body>
+
+<h1 id = "dai">ダイアルパッド</h1>
+
+<div class = "text_wrapper">
+<form name = "myFORM">
+ <input type = "text" class = "text" name = "number" id = "number">
+</form>
+</div>
+
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "1" class = "button" id = "1" onclick = "phone('1')">
+ <input type = "button" value = "2" class = "button" id = "2" onclick = "phone('2')">
+ <input type = "button" value = "3" class = "button" id = "3" onclick = "phone('3')">
+</form>
+</div>
+
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "4" class = "button" id = "4" onclick = "phone('4')">
+ <input type = "button" value = "5" class = "button" id = "5" onclick = "phone('5')">
+ <input type = "button" value = "6" class = "button" id = "6" onclick = "phone('6')">
+</form>
+</div>
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "7" class = "button" id = "7" onclick = "phone('7')">
+ <input type = "button" value = "8" class = "button" id = "8" onclick = "phone('8')">
+ <input type = "button" value = "9" class = "button" id = "9" onclick = "phone('9')">
+</form>
+</div>
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "*" class = "button" id = "*" onclick = "phone('*')">
+ <input type = "button" value = "0" class = "button" id = "0" onclick = "phone('0')">
+ <input type = "button" value = "#" class = "button" id = "#" onclick = "phone('#')">
+</form>
+</div>
+
+<div class = "button_wrapper">
+<form>
+ <input type = "button" value = "DEL" class = "button" onclick = "del()">
+</form>
+</div>
+
+
+
+
+<script>
+
+function phone(param){
+
+ var txt = document.myFORM.number.value + param;
+ document.myFORM.number.value = txt;
+
+}
+
+function del(){
+
+ var txt = document.myFORM.number.value.slice(0, -1);
+ document.myFORM.number.value = txt;
+
+
+}
+
+
+
+</script>
+
+</body>
+
+</html>
+

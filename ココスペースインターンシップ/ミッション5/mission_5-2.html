@@ -1,0 +1,81 @@
+﻿<html>
+
+<head>
+
+<style>
+
+h1{
+ text-align: center;
+}
+
+div{
+ float: left;
+ margin-right: 10px;
+ margin-bottom: 10px;
+ padding: 1em;
+ border: 1px solid;
+ border-radius: 1em;
+ background-color: steelblue;
+}
+
+
+
+
+</style>
+</head>
+
+
+<h1>課題5-2</h1>
+
+
+<form method = "post">
+<div>
+ <input type = "text" name = "AAA" id = "aaa">
+ <input type = "button" value = "AAA">
+</div>
+</form>
+
+<form method = "post">
+<div>
+ <input type = "text" name = "BBB" id = "bbb">
+ <input type = "button" value = "BBB" onclick="tenki()">
+</div>
+</form>
+
+
+<form method = "post">
+<div>
+ <input type = "text" name = "CCC">
+ <input type = "submit" value = "CCC">
+</div>
+</form>
+
+
+<div style = clear:both;>
+ <input type = "checkbox" value = "1">
+</div>
+
+<form method = "post">
+<div style = clear:both;>
+ <input type = "text" name = "DDD">
+ <input type = "button" value = "DDD">
+</div>
+</form>
+
+
+<body>
+
+<script>
+
+function tenki(){
+
+ document.getElementById("aaa").value=document.getElementById("bbb").value;
+
+}
+
+</script>
+
+</body>
+
+</html>
+

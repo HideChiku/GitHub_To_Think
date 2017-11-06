@@ -1,0 +1,99 @@
+﻿<html>
+
+<head>
+
+<style>
+
+h1{
+ text-align: center;
+}
+
+div{
+ float: left;
+ margin-right: 10px;
+ margin-bottom: 10px;
+ padding: 1em;
+ border: 1px solid;
+ border-radius: 1em;
+ background-color: steelblue;
+}
+
+
+
+</style>
+</head>
+
+
+<h1 id = "dai">課題5-4</h1>
+
+
+<form method = "post">
+<div id = "qqq">
+ <input type = "text" name = "AAA" id = "aaa">
+ <input type = "button" value = "AAA" onclick="check()">
+</div>
+</form>
+
+<form method = "post">
+<div id = "ppp">
+ <input type = "text" name = "BBB" id = "bbb">
+ <input type = "button" value = "BBB">
+</div>
+</form>
+
+<form method = "post">
+<div id = "rrr">
+ <input type = "text" name = "CCC" id = "ccc">
+ <input type = "submit" value = "CCC">
+</div>
+</form>
+
+
+<div style = clear:both;>
+ <input type = "checkbox" value = "1">
+</div>
+
+<form method = "post">
+<div id = "sss" style = clear:both;>
+ <input type = "text" name = "DDD" id = "ddd">
+ <input type = "button" value = "DDD">
+</div>
+</form>
+
+
+
+
+<body>
+
+
+<script>
+
+function check(){
+
+
+
+var AAA = document.getElementById("aaa").value;
+
+if(AAA != ""){
+
+var res = confirm("転記してよろしいですか？");
+ if(res == true){
+  document.getElementById("bbb").value=document.getElementById("aaa").value;
+ }else{
+ }
+
+}else{
+
+alert("文字が入力されていません");
+
+}
+
+
+}
+
+</script>
+
+</body>
+
+</html>
+

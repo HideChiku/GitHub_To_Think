@@ -1,0 +1,227 @@
+﻿<html>
+
+<h1>サークル内掲示板(SmartPhone用)</h1>
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+
+body{
+  background-color: steelblue;
+}
+
+label{
+  font-size: 30px;
+  margin-right: 5px;
+  width: 300px;
+  float: left;
+}
+
+.top{
+  font-size: 30px;
+  width: 250px;
+}
+
+.sentaku{
+  font-size: 30px;
+  width: 300px;
+}
+
+.nyuryoku{
+  height: 35px;
+  border: 2px black solid;
+}
+
+.file{
+  font-size: 25px;
+  width: 450px;
+}
+
+.form1{
+  background-color: white;
+  margin: 0 auto;
+  width: 800px;
+
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 1em;
+}
+
+.toko{
+  background-color: white;
+  margin: 0 auto;
+  width: 800px;
+
+  padding: 1em;
+  border: 1px solid;
+}
+
+div{
+  text-align: left;
+}
+
+.submit{
+  text-align: center;
+}
+
+.thread{
+  background-color: white;
+  margin: 0 auto;
+  width: 800px;
+
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 1em;
+}
+
+p{
+
+ font-size: 25px;
+
+}
+
+h1{
+
+ font-size: 50px;
+
+ text-align:center;
+
+}
+
+h2{
+
+ font-size: 40px;
+
+}
+
+h3{
+
+  font-size: 30px;
+
+  text-align: center;
+
+}
+
+</style>
+</head>
+
+
+<form method = "post">
+  <input type = "hidden" name = "logout" value = "logout">
+  <div><input type = "submit" value = "ログアウト" class = "top"></div>
+</form>
+<form method = "post">
+  <input type = "hidden" name = "threaddef" value = "def">
+  <input type = "submit" value = "スレッド選択" class = "top">
+</form>
+
+
+
+<form class="form1" method = "post">
+  <h2>スレッド検索</h2>
+  <p><div>
+    <label for="thread">スレッド名</label>
+    <input type = "text" name = "thread" class = "nyuryoku">
+  </div></p>
+  <div class="submit"><input type = "submit" value = "検索" class = "top"></div>
+</form>
+
+
+
+
+<div class="thread">
+<h2>表示スレッド選択</h2>
+
+
+{foreach from=$c_array item='count'}
+
+<form class="form2" method = "post">
+  <input type = "hidden" name = "choice" value = "{$row{$count}}">
+  <input type = "submit" value = "{$row{$count}}" class = "sentaku">
+</form>
+
+{/foreach}
+
+</div>
+
+
+<form class="form1" method = "post" enctype = "multipart/form-data">
+<h2>投稿フォーム</h2>
+  <input type = "hidden" name = "check" value = "{$T}">
+  <p><div>
+    <label for="sinnki">スレッド新規作成:</label>
+    <input type = "text" name = "sinnki" class = "nyuryoku">
+  </div></p>
+  <p><div>
+    <label for="name">名前:</label>
+    <input type = "text" name = "name" value = "{$N}" class = "nyuryoku">
+  </div></p>
+  <p><div>
+    <label for="generation">代:</label>
+    <input type = "text" name = "generation" value = "{$G}" placeholder = "半角数字入力" class = "nyuryoku">
+  </div></p>
+  <p><div>
+    <label for="subject">件名:</label>
+    <input type = "text" name = "subject" value = "{$S}" class = "nyuryoku">
+  </div></p>
+  <p><div>
+    <label for="message">本文:</label>
+    <textarea name = "message" rows = "7">{$M}</textarea>
+  </div></p>
+  <div>
+    <label for="upload">画像・動画:</label>
+    <input type = "file" name = "upload" class = "file">
+  </div>
+  <p>*編集時，ファイルを送信すると上書き保存します</p>
+  <div>
+    <label for="opengeneration">公開する代:</label>
+    <input type = "text" name = "opengeneration" value = "{$O}" placeholder = "半角数字入力" class = "nyuryoku">
+  </div>
+  <p>*空欄の場合，全ての代に公表します</p>
+  <p><div>
+    <label for="password">パスワード設定:</label>
+    <input type = "text" name = "password" class = "nyuryoku">
+  </div></p>
+  <div class="submit"><input type = "submit" class = "top"></div>
+</form>
+
+
+
+<form class="form1" method = "post">
+  <p><div>
+    <label for="delete">削除対象番号:</label>
+    <input type = "text" name = "delete" placeholder = "半角数字入力" class = "nyuryoku">
+  </div></p>
+  <p><div>
+    <label for="pass1">パスワード:</label>
+    <input type = "text" name = "pass1" class = "nyuryoku">
+  </div></p>
+  <div>
+    <input type = "checkbox" name = "filedel" value ="delete">
+  </div>
+  <p>*ファイルのみ削除</p>
+  <div class="submit"><input type = "submit" value = "削除" onclick="return RunConfirm();" class = "top"></div>
+</form>
+
+
+
+<form class="form1" method = "post">
+  <p><div>
+    <label for="edit">編集対象番号:</label>
+    <input type = "text" name = "edit" placeholder = "半角数字入力" class = "nyuryoku">
+  </div></p>
+  <p><div>
+    <label for="pass2">パスワード:</label>
+    <input type = "text" name = "pass2" class = "nyuryoku">
+  </div></p>
+  <div class="submit"><input type = "submit" value = "編集" class = "top"></div>
+</form>
+</html>
+
+
+
+
+

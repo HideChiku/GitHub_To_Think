@@ -1,0 +1,189 @@
+﻿<html>
+
+<h1>サークル内掲示板(携帯用)</h1>
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+
+body{
+  background-color: steelblue;
+}
+
+label{
+  margin-right: 10px;
+  width: 140px;
+  float: left;
+}
+
+.form1{
+  background-color: white;
+  margin: 0 auto;
+  width: 420px;
+
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 1em;
+}
+
+.toko{
+  background-color: white;
+  margin: 0 auto;
+  width: 400px;
+
+  padding: 1em;
+  border: 1px solid;
+}
+
+div{
+  text-align: left;
+}
+
+.submit{
+  text-align: center;
+}
+
+.thread{
+  background-color: white;
+  margin: 0 auto;
+  width: 420px;
+
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 1em;
+}
+
+p{
+ font-size: 14px;
+}
+
+h1{
+text-align:center;
+}
+h3{
+  text-align: center;
+}
+
+</style>
+</head>
+
+
+<form method = "post">
+  <input type = "hidden" name = "logout" value = "logout">
+  <div><input type = "submit" value = "ログアウト"></div>
+</form>
+<form method = "post">
+  <input type = "hidden" name = "threaddef" value = "def">
+  <input type = "submit" value = "スレッド選択">
+</form>
+
+
+
+<form class="form1" method = "post">
+  <h2>スレッド検索</h2>
+  <div>
+    <label for="thread">スレッド名</label>
+    <input type = "text" name = "thread">
+  </div></p>
+  <div class="submit"><input type = "submit" value = "検索"></div>
+</form>
+
+
+
+
+<div class="thread">
+<h2>表示スレッド選択</h2>
+
+
+{foreach from=$c_array item='count'}
+
+<form class="form2" method = "post">
+  <input type = "hidden" name = "choice" value = "{$row{$count}}">
+  <input type = "submit" value = "{$row{$count}}">
+</form>
+
+{/foreach}
+
+</div>
+
+
+<form class="form1" method = "post" enctype = "multipart/form-data">
+<h2>投稿フォーム</h2>
+  <input type = "hidden" name = "check" value = "{$T}">
+  <div>
+    <label for="sinnki">スレッド新規作成:</label>
+    <input type = "text" name = "sinnki">
+  </div></p>
+  <div>
+    <label for="name">名前:</label>
+    <input type = "text" name = "name" value = "{$N}">
+  </div></p>
+  <div>
+    <label for="generation">代:</label>
+    <input type = "text" name = "generation" value = "{$G}" placeholder = "半角数字入力">
+  </div></p>
+  <div>
+    <label for="subject">件名:</label>
+    <input type = "text" name = "subject" value = "{$S}">
+  </div></p>
+  <div>
+    <label for="message">本文:</label>
+    <textarea name = "message" rows = "7">{$M}</textarea>
+  </div></p>
+  <div>
+    <label for="upload">画像・動画:</label>
+    <input type = "file" name = "upload">
+  </div>
+  <p>*編集時，ファイルを送信すると上書き保存します</p>
+  <div>
+    <label for="opengeneration">公開する代:</label>
+    <input type = "text" name = "opengeneration" value = "{$O}" placeholder = "半角数字入力">
+  </div>
+  <p>*空欄の場合，全ての代に公表します</p>
+  <div>
+    <label for="password">パスワード設定:</label>
+    <input type = "text" name = "password">
+  </div></p>
+  <div class="submit"><input type = "submit"></div>
+</form>
+
+
+
+<form class="form1" method = "post">
+  <div>
+    <label for="delete">削除対象番号:</label>
+    <input type = "text" name = "delete" placeholder = "半角数字入力">
+  </div></p>
+  <div>
+    <label for="pass1">パスワード:</label>
+    <input type = "text" name = "pass1">
+  </div></p>
+  <div>
+    <input type = "checkbox" name = "filedel" value ="delete">
+  </div>
+  <p>*ファイルのみ削除</p>
+  <div class="submit"><input type = "submit" value = "削除" onclick="return RunConfirm();"></div>
+</form>
+
+
+
+<form class="form1" method = "post">
+  <div>
+    <label for="edit">編集対象番号:</label>
+    <input type = "text" name = "edit" placeholder = "半角数字入力">
+  </div></p>
+  <div>
+    <label for="pass2">パスワード:</label>
+    <input type = "text" name = "pass2">
+  </div></p>
+  <div class="submit"><input type = "submit" value = "編集"></div>
+</form>
+</html>
+
+
+
+
+
